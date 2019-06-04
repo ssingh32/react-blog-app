@@ -16,7 +16,7 @@ exports[`Should render Header correctly 1`] = `
         to="/dashboard"
       >
         <h1>
-          Boilerplate app
+          Blog App
         </h1>
       </Link>
       <button
