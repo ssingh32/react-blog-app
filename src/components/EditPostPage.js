@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EditPostPage = () => {
+const EditPostPage = (props) => {
     return (
         <div>
         <h1>Edit Post Page</h1>

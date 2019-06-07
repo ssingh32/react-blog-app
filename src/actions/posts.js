@@ -26,3 +26,24 @@ export const startAddPost = (postData = {}) => {
         });
       }
 }
+
+export const editPost = (id, updates) => {
+  return {
+    type: 'EDIT_POST',
+    id,
+    updates
+  }
+}
+
+export const startEditPost = (id, editedData) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+
+    return database.ref(`users/${uid}/posts/${id}`).update(editedData).then(() => {
+      dispatch(editPost({
+        id,
+        editedData
+      }));
+    });
+  }
+}

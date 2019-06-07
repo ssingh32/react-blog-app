@@ -14,7 +14,7 @@ class AddPostPage extends React.Component {
         return (
         <div>
             <h1>Add Post Page</h1>
-            <PostForm  onSubmit={this.onSubmit}/>
+            <PostForm onSubmit={this.onSubmit}/>
         </div>
         );
     }
