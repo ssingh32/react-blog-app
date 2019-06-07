@@ -15,22 +15,6 @@ export default () => {
     composeEnhancers(applyMiddleware(thunk))
     // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
-
-  const post = {
-    id: '123',
-    title: 'My First Post' ,
-    body: 'Post body',
-    timestamp: 42
-  };
-  const post2 = {
-    id: '567',
-    title: 'My Second Post' ,
-    body: 'Post body of Second Post',
-    timestamp: 50
-  };
-
-  store.dispatch(addPost(post));
-  store.dispatch(addPost(post2));
-
+  
   return store;
 };
