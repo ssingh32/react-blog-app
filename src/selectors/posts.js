@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 const getVisiblePost = (postData , { text, sortBy }) => {
     if (text) {
         const filteredData = postData.filter((post) => {     

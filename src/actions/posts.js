@@ -44,3 +44,28 @@ export const startEditPost = (id, editedData) => {
     })
   };
 }
+
+export const setPost = (posts) => {
+  return {
+    type: 'SET_POST',
+    posts
+  }
+}
+
+export const startSetPost = () => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+
+    return database.ref(`users/${uid}/posts`).once('value').then((snapshot) => {
+        const posts = [];
+
+        snapshot.forEach((childSnapshot) => {
+          posts.push({
+            id: childSnapshot.key,
+            ...childSnapshot.val()
+          });
+        });
+        dispatch(setPost(posts));
+    })
+  };
+}

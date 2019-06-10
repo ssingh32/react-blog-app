@@ -2,7 +2,9 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import authReducer from '../reducers/auth';
 import postsReducer from '../reducers/posts';
-import {addPost} from '../actions/posts';
+import {setPost} from '../actions/posts';
+import {startSetPost} from '../actions/posts';
+import posts from '../tests/fixtures/posts';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
