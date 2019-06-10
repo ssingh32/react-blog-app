@@ -16,13 +16,5 @@ export default () => {
     // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
 
-  const post = {
-    id: '231231',
-    title: 'new post',
-    body: 'body of post',
-    timestamp: 5875658758655
-  };
-  store.dispatch(addPost(post));
-
   return store;
 };
