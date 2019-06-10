@@ -1,14 +1,27 @@
 import React from 'react';
 import PostForm from '../components/PostForm';
 import { connect } from 'react-redux';
+import { startEditPost } from '../actions/posts';
 
-const EditPostPage = (props) => {
-    return (
-        <div>
-            <h1>Edit Post Page</h1>
-            {console.log(props.post)}
-        </div>
-    )
+export class EditPostPage extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    onSubmit = (post) => {
+        this.props.startEditPost(this.props.post.id, post);
+        this.props.history.push('/');
+    }
+    
+    render() {
+        return (
+            <div>
+                <h1>Edit Post Page</h1>
+                {console.log(this.props.post)}
+                <PostForm post={this.props.post} onSubmit={this.onSubmit}/>
+            </div>
+        )
+    }
 };
 
 const mapStateToProps = (state, props) => {
@@ -17,4 +30,10 @@ const mapStateToProps = (state, props) => {
     }
 }
 
-export default connect(mapStateToProps)(EditPostPage);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        startEditPost: (postID, post) => dispatch(startEditPost(postID, post))
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditPostPage);

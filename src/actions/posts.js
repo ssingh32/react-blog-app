@@ -40,10 +40,7 @@ export const startEditPost = (id, editedData) => {
     const uid = getState().auth.uid;
 
     return database.ref(`users/${uid}/posts/${id}`).update(editedData).then(() => {
-      dispatch(editPost({
-        id,
-        editedData
-      }));
-    });
-  }
+        dispatch(editPost(id, editedData));
+    })
+  };
 }
