@@ -5,6 +5,7 @@ import AppRouter, {history} from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { login, logout } from './actions/auth';
 import LoadingPage from './components/LoadingPage';
+import { startSetPost } from './actions/posts';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
@@ -32,10 +33,12 @@ firebase.auth().onAuthStateChanged((user) => {
   if (user)
   {
     store.dispatch(login(user.uid));
-    renderApp();
-    if (history.location.pathname === '/') {
-      history.push('/dashboard');
-    }
+    store.dispatch(startSetPost()).then(() => {
+      renderApp();
+      if (history.location.pathname === '/') {
+        history.push('/dashboard');
+      }
+    });
   }
   else {
     store.dispatch(logout());
