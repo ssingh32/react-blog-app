@@ -24,7 +24,7 @@ export class EditPostPage extends React.Component {
             <div>
                 <h1>Edit Post Page</h1>
                 <PostForm post={this.props.post} onSubmit={this.onSubmit}/>
-                <button onClick={this.props.onRemovePost}>Remove Post</button>
+                <button onClick={this.onRemovePost}>Remove Post</button>
             </div>
         )
     }

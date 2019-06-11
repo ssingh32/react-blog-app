@@ -4,7 +4,8 @@ import authReducer from '../reducers/auth';
 import postsReducer from '../reducers/posts';
 import {addPost} from '../actions/posts';
 import {removePost} from '../actions/posts';
-import {startSetPost} from '../actions/posts';
+import {startRemovePost} from '../actions/posts';
+import {startAddPost} from '../actions/posts';
 import posts from '../tests/fixtures/posts';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -18,15 +19,6 @@ export default () => {
     composeEnhancers(applyMiddleware(thunk))
     // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
-
-    const post = {
-      id: 1,
-      title: 'First Post',
-      description: '',
-      timestamp: 0
-    }
-
-  store.dispatch(addPost(post));
-  
+ 
   return store;
 };
