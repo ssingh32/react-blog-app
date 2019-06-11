@@ -45,6 +45,23 @@ export const startEditPost = (id, editedData) => {
   };
 }
 
+export const removePost = ({id} = {}) => {
+  return {
+    type: 'REMOVE_POST',
+    id
+  }
+}
+
+export const startRemovePost = ({id} = {}) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+
+    return database.ref(`users/${uid}/posts/${id}`).remove().then(() => {
+      dispatch(removePost({id}));
+    });
+  };
+}
+
 export const setPost = (posts) => {
   return {
     type: 'SET_POST',

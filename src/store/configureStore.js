@@ -2,7 +2,8 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import authReducer from '../reducers/auth';
 import postsReducer from '../reducers/posts';
-import {setPost} from '../actions/posts';
+import {addPost} from '../actions/posts';
+import {removePost} from '../actions/posts';
 import {startSetPost} from '../actions/posts';
 import posts from '../tests/fixtures/posts';
 
@@ -18,5 +19,14 @@ export default () => {
     // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
 
+    const post = {
+      id: 1,
+      title: 'First Post',
+      description: '',
+      timestamp: 0
+    }
+
+  store.dispatch(addPost(post));
+  
   return store;
 };
