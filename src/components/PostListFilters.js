@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setTextFilter } from '../actions/filters';
+import { sortByTitle } from '../actions/filters';
 
 export class PostListFilters extends React.Component {
     state = {
@@ -12,20 +13,37 @@ export class PostListFilters extends React.Component {
         this.setState(() => ({ text }));
         this.props.setTextFilter(text);
     }
+
+    onOptionSelected = (event) => {
+        const value = event.target.value;
+        if (value === 'title') {
+            this.props.sortByTitle();
+        }
+    }
     
     render() {
         return (
             <div>
             <input placeholder="Search Posts" onChange={this.onSearchChangeHandler} value={this.state.text}></input>
+            <select value={this.props.filters.sortBy} onChange={this.onOptionSelected} >
+                <option value="title">Title</option>
+            </select>
             </div>
         );
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
     return {
-        setTextFilter : (text) => dispatch(setTextFilter(text))
+        filters : state.filters
     }
 }
 
-export default connect(undefined, mapDispatchToProps)(PostListFilters);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setTextFilter : (text) => dispatch(setTextFilter(text)),
+        sortByTitle : () => dispatch(sortByTitle())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostListFilters);
