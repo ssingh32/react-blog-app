@@ -21,7 +21,7 @@ export const PostList = (props) => {
 
 const mapStateToProps = (state, props) => {
     return {
-        posts: getVisiblePost(state.posts, {})
+        posts: getVisiblePost(state.posts, state.filters)
     }
 }
 

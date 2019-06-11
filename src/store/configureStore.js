@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import authReducer from '../reducers/auth';
 import postsReducer from '../reducers/posts';
+import filtersReducer from '../reducers/filters';
 import {addPost} from '../actions/posts';
 import {removePost} from '../actions/posts';
 import {startRemovePost} from '../actions/posts';
@@ -14,7 +15,8 @@ export default () => {
   const store = createStore(
     combineReducers({
       auth: authReducer,
-      posts: postsReducer
+      posts: postsReducer,
+      filters: filtersReducer
     }),
     composeEnhancers(applyMiddleware(thunk))
     // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

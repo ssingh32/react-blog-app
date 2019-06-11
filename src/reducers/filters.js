@@ -3,7 +3,7 @@ const filtersReducerDefaultState = {
     sortBy: 'title'
 };
 
-export default (state= filtersReducerDefaultState, action) => {
+export default (state = filtersReducerDefaultState, action) => {
     switch(action.type) {
         case 'SORT_BY_TITLE':
             return {...state, sortBy: 'title'};
