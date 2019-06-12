@@ -28,8 +28,10 @@ export class EditPostPage extends React.Component {
                         <h1 className="page-header__title">Edit Post</h1>
                     </div>
                 </div>
-                <div>
-                    <Link to={`/read/${this.props.post.id}`}>Post readable at: http://{window.location.hostname}/read/{this.props.post.id}</Link>
+                <div className="content-container">
+                    <Link to={`/read/${this.props.post.id}`}>
+                    Post readable at: http://{window.location.hostname}/read/{this.props.post.id}
+                    </Link>
                 </div>
                 <div className="content-container">
                     <PostForm post={this.props.post} onSubmit={this.onSubmit} />

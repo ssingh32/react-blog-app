@@ -26,7 +26,7 @@ export class PostListFilters extends React.Component {
             <div className="content-container">
                 <div className="input-group">
                     <div className="input-group__item">
-                        <input placeholder="Search Posts" onChange={this.onSearchChangeHandler} value={this.state.text}></input>
+                        <input className="text-input" placeholder="Search Posts" onChange={this.onSearchChangeHandler} value={this.state.text}></input>
                     </div>
                     <div className="input-group__item">
                         <select className="select" value={this.props.filters.sortBy} onChange={this.onOptionSelected} >

@@ -71,7 +71,8 @@ export default class PostForm extends React.Component {
           isOutsideRange={() => false}
         />
         <textarea
-          placeholder="Body of post"
+          placeholder="Post Body"
+          rows="10"
           value={this.state.body}
           onChange={this.bodyChangeHandler}
         >

@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 
 export const ReadPost = (props) => {
     return (
-        <div>
-        <h1>{props.post.title}</h1>
-        <p>{props.post.body}</p>
+        <div className="content-container">
+            <h1>{props.post.title}</h1>
+            <p>{props.post.body}</p>
         </div>
-        );
+    );
 }
 
 const mapStateToProps = (state, props) => {
