@@ -3,6 +3,7 @@ import PostForm from '../components/PostForm';
 import { connect } from 'react-redux';
 import { startEditPost } from '../actions/posts';
 import { startRemovePost } from '../actions/posts';
+import { Link } from 'react-router-dom';
 
 export class EditPostPage extends React.Component {
     constructor(props) {
@@ -22,7 +23,8 @@ export class EditPostPage extends React.Component {
     render() {
         return (
             <div>
-                <h1>Edit Post Page</h1>
+                <h1>Edit Post</h1>
+                <Link to={`/read/${this.props.post.id}`}>Post readable at: http://{window.location.hostname}/read/{this.props.post.id}</Link>
                 <PostForm post={this.props.post} onSubmit={this.onSubmit}/>
                 <button onClick={this.onRemovePost}>Remove Post</button>
             </div>

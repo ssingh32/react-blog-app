@@ -5,6 +5,7 @@ import DashboardPage from '../components/DashboardPage';
 import AddPostPage from '../components/AddPostPage';
 import EditPostPage from '../components/EditPostPage';
 import NotFoundPage from '../components/NotFoundPage';
+import ReadPost from '../components/ReadPost';
 import LoginPage from '../components/LoginPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
@@ -19,6 +20,7 @@ const AppRouter = () => (
         <PrivateRoute path="/dashboard" component={DashboardPage} />
         <PrivateRoute path="/add" component={AddPostPage} />
         <PrivateRoute path="/edit/:id" component={EditPostPage} exact={true}/>
+        <PrivateRoute path="/read/:id" component={ReadPost} exact={true}/>
         <Route component={NotFoundPage} />
       </Switch>
     </div>
