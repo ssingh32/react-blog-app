@@ -4,11 +4,16 @@ import { connect } from 'react-redux';
 import { startEditPost } from '../actions/posts';
 import { startRemovePost } from '../actions/posts';
 import { Link } from 'react-router-dom';
+import RemovePostModal from '../components/RemovePostModal';
 
 export class EditPostPage extends React.Component {
     constructor(props) {
         super(props);
     }
+
+    state = {
+        modalOpen: false
+    };
 
     onSubmit = (post) => {
         this.props.startEditPost(this.props.post.id, post);
@@ -18,6 +23,14 @@ export class EditPostPage extends React.Component {
     onRemovePost = () => {
         this.props.startRemovePost({ id: this.props.post.id });
         this.props.history.push('/');
+    }
+
+    handleModalOption = () => {
+        this.setState(() => ({modalOpen: !this.state.modalOpen}))
+    }
+  
+    clearSelectedOption = () => {
+      this.setState(() => ({modalOpen: false}))
     }
 
     render() {
@@ -35,7 +48,13 @@ export class EditPostPage extends React.Component {
                 </div>
                 <div className="content-container">
                     <PostForm post={this.props.post} onSubmit={this.onSubmit} />
-                    <button className="button button--secondary" onClick={this.onRemovePost}>Remove Post</button>
+                    <button className="button button--secondary" onClick={this.handleModalOption}>Remove Post</button>
+                    <RemovePostModal 
+                    handleModalOption={this.handleModalOption} 
+                    clearSelectedOption={this.clearSelectedOption} 
+                    onRemovePost={this.onRemovePost} 
+                    modalOpen={this.state.modalOpen}
+                    />
                 </div>
             </div>
         )
