@@ -19,14 +19,22 @@ export class EditPostPage extends React.Component {
         this.props.startRemovePost({ id: this.props.post.id });
         this.props.history.push('/');
     }
-    
+
     render() {
         return (
             <div>
-                <h1>Edit Post</h1>
-                <Link to={`/read/${this.props.post.id}`}>Post readable at: http://{window.location.hostname}/read/{this.props.post.id}</Link>
-                <PostForm post={this.props.post} onSubmit={this.onSubmit}/>
-                <button onClick={this.onRemovePost}>Remove Post</button>
+                <div className="page-header">
+                    <div className="content-container">
+                        <h1 className="page-header__title">Edit Post</h1>
+                    </div>
+                </div>
+                <div>
+                    <Link to={`/read/${this.props.post.id}`}>Post readable at: http://{window.location.hostname}/read/{this.props.post.id}</Link>
+                </div>
+                <div className="content-container">
+                    <PostForm post={this.props.post} onSubmit={this.onSubmit} />
+                    <button className="button button--secondary" onClick={this.onRemovePost}>Remove Post</button>
+                </div>
             </div>
         )
     }

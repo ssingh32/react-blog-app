@@ -5,7 +5,7 @@ import { sortByTitle } from '../actions/filters';
 
 export class PostListFilters extends React.Component {
     state = {
-        text : ''
+        text: ''
     }
 
     onSearchChangeHandler = (event) => {
@@ -20,14 +20,20 @@ export class PostListFilters extends React.Component {
             this.props.sortByTitle();
         }
     }
-    
+
     render() {
         return (
-            <div>
-            <input placeholder="Search Posts" onChange={this.onSearchChangeHandler} value={this.state.text}></input>
-            <select value={this.props.filters.sortBy} onChange={this.onOptionSelected} >
-                <option value="title">Title</option>
-            </select>
+            <div className="content-container">
+                <div className="input-group">
+                    <div className="input-group__item">
+                        <input placeholder="Search Posts" onChange={this.onSearchChangeHandler} value={this.state.text}></input>
+                    </div>
+                    <div className="input-group__item">
+                        <select className="select" value={this.props.filters.sortBy} onChange={this.onOptionSelected} >
+                            <option value="title">Title</option>
+                        </select>
+                    </div>
+                </div>
             </div>
         );
     };
@@ -35,14 +41,14 @@ export class PostListFilters extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        filters : state.filters
+        filters: state.filters
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setTextFilter : (text) => dispatch(setTextFilter(text)),
-        sortByTitle : () => dispatch(sortByTitle())
+        setTextFilter: (text) => dispatch(setTextFilter(text)),
+        sortByTitle: () => dispatch(sortByTitle())
     }
 }
 

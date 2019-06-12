@@ -4,7 +4,7 @@ import { startAddPost } from '../actions/posts';
 import { connect } from 'react-redux';
 
 export class AddPostPage extends React.Component {
-    
+
     onSubmit = (post) => {
         this.props.startAddPost(post);
         this.props.history.push('/');
@@ -12,10 +12,16 @@ export class AddPostPage extends React.Component {
 
     render() {
         return (
-        <div>
-            <h1>Add Post Page</h1>
-            <PostForm onSubmit={this.onSubmit}/>
-        </div>
+            <div>
+                <div className="page-header">
+                    <div className="content-container">
+                        <h1 className="page-header__title">Add Post</h1>
+                    </div>
+                </div>
+                <div className="content-container">
+                    <PostForm onSubmit={this.onSubmit} />
+                </div>
+            </div>
         );
     }
 }
