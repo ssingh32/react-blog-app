@@ -43,7 +43,7 @@ export default class PostForm extends React.Component {
           this.setState(() => ({ error: '' }));
           this.props.onSubmit({
             title: this.state.title,
-            createdAt: this.state.timestamp.valueOf(),
+            timestamp: this.state.timestamp.valueOf(),
             body: this.state.body
           });
         }
